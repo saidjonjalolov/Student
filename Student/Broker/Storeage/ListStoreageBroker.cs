@@ -55,14 +55,23 @@ namespace Student.Broker.Storeage
 
         public StudenT AddStudent(StudenT student)
         {
-            throw new NotImplementedException();
+            this.students.Add(student);
+            return student;
         }
 
-        public bool CheckoutStudent(StudenT student)
+        public StudenT FindStudentById(int id)
         {
-            throw new NotImplementedException();
+            foreach (StudenT studentItem in this.students)
+            {
+                if (studentItem.Id == id)
+                {
+                    return studentItem;
+                }
+            }
+            return new StudenT();
         }
-        public bool LetterCheckout(string firstName)
+
+        public bool FindStudentByLetter(string firstName)
         {
             throw new NotImplementedException();
         }
