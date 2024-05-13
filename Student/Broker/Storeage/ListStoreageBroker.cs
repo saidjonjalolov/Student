@@ -71,9 +71,17 @@ namespace Student.Broker.Storeage
             return new StudenT();
         }
 
-        public bool FindStudentByLetter(string firstName)
+        public List<StudenT> FindStudentByLetter(char letter)
         {
-            throw new NotImplementedException();
+            List<StudenT> studentNew = new List<StudenT>();
+            foreach (StudenT studentItem in this.students)
+            {
+                if (studentItem.FirstName.Contains(letter))
+                {
+                    studentNew.Add(studentItem);
+                }
+            }
+            return studentNew;
         }
 
         public Print PrintNameAndEmail(int id)
