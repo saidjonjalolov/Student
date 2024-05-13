@@ -7,5 +7,5 @@ using Student.Service;
 
 StudentService studentService = new StudentService();
 Console.WriteLine("Ismni kiriting");
-string studentName = Console.ReadLine();
-studentService.CheckoutByName(studentName);
+char letter  = Convert.ToChar(Console.ReadLine());
+studentService.CheckoutByLetter(letter);
