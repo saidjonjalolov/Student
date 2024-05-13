@@ -10,7 +10,7 @@ namespace Student.Service
     {
         Print DisplayStudent(int id);
         List<StudenT> CheckoutByLetter(char letter);
-        StudenT CheckoutById(StudenT student);
+        StudenT CheckoutByName(string firstName);
         bool Check(StudenT student);
     }
 }
