@@ -2,24 +2,30 @@
 // Great Code Team (c) All rights reserved
 //----------------------------------------
 
-using Student.Broker.Logging;
-using Student.Broker.Storeage;
-using Student.Model;
 
+
+
+using Student.Model;
 
 namespace Student.Service
 {
     internal class StudentService
     {
-        private readonly ILoggingBroker loggingBroker;
-        private readonly IStoreageBroker storeageBroker;
-        public StudentService()
+        public StudenT CheckoutById(StudenT student)
         {
-            this.loggingBroker = new LoggingBroker();
-            this.storeageBroker = new ListStoreageBroker();
+            throw new NotImplementedException();
         }
 
-        public bool Check(Student student)
+        public List<StudenT> CheckoutByLetter(char letter)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Print DisplayStudent(int id)
+        {
+            throw new NotImplementedException();
+        }
+        public StudenT InsertStudent(StudenT student)
         {
             throw new NotImplementedException();
         }
