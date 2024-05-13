@@ -6,7 +6,7 @@ namespace Student.Broker.Logging
 {
     internal interface ILoggingBroker
     {
-        void LogError(string v);
-        void LogInformation(string v);
+        void LogInformation(string message);
+        void LogError(string message);
     }
 }
