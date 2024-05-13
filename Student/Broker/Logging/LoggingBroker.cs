@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//----------------------------------------
+// Great Code Team (c) All rights reserved
+//----------------------------------------
 
 namespace Student.Broker.Logging
 {
     internal class LoggingBroker
     {
+
     }
 }
