@@ -10,7 +10,7 @@ namespace Student.Broker.Storeage
     {
         Print PrintNameAndEmail(int id);
         List<StudenT> FindStudentByLetter(char letter);
-        StudenT FindStudentById(int id);
+        StudenT FindStudentByName(string firstName);
         StudenT AddStudent(StudenT student);
     }
 }

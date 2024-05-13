@@ -3,5 +3,9 @@
 //---------------------------------------
 
 using Student.Broker.Storeage;
+using Student.Service;
 
-ListStoreageBroker listStoreageBroker = new ListStoreageBroker();
+StudentService studentService = new StudentService();
+Console.WriteLine("Ismni kiriting");
+string studentName = Console.ReadLine();
+studentService.CheckoutByName(studentName);
