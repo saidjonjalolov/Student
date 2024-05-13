@@ -31,20 +31,32 @@ namespace Student.Service
 
         private List<StudenT> InvalidCheckoutByLetter()
         {
-            throw new NotImplementedException();
+            this.loggingBroker.LogError("Not Found.");
+            return new List<StudenT>();
         }
 
         private List<StudenT> ValidationCheckoutByLetter(char letter)
         {
-            if (String.IsNullOrWhiteSpace(letter.ToString()))
+            List<StudenT> studenInfo = this.storeageBroker.FindStudentByLetter(letter);
+            foreach (var student in studenInfo)
             {
-                this.loggingBroker.LogError("The reference is not valid.");
-                return new List<StudenT>();
+                if (student.FirstName.Contains(letter.ToString()))
+                {
+                    this.loggingBroker.LogInformation($"Id: {student.Id}\n" +
+                            $"FirstName: {student.FirstName}\nLastName: {student.LastName}\n" +
+                            $"Age: {student.Age}\nEmail: {student.Email}");
+                    return studenInfo;
+                }
+                else
+                {
+                    if (!student.FirstName.Contains(letter.ToString()))
+                    {
+                        this.loggingBroker.LogError("The reference is not valid.");
+                        return studenInfo;
+                    }
+                }
             }
-            else
-            {
-                var studenInfo = this.storeageBroker.FindStudentByLetter(letter);
-            }
+            return new List<StudenT>();
         }
 
         public StudenT CheckoutByName(string firstName)
