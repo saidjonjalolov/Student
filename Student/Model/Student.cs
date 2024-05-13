@@ -4,7 +4,7 @@
 
 namespace Student.Model
 {
-    public class Student
+    internal class StudenT
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
