@@ -8,9 +8,9 @@ namespace Student.Broker.Storeage
 {
     internal interface IStoreageBroker
     {
-        DemoStudent PrintNameAndEmail(int id);
-        List<Student> FindStudentByLetter(char letter);
-        Student FindStudentByName(string name);
-        Student AddStudent(Student student);
+        StudenT PrintNameAndEmail(string id);
+        List<StudenT> FindStudentByLetter(char letter);
+        StudenT FindStudentByName(string name);
+        StudenT AddStudent(StudenT student);
     }
 }
