@@ -8,6 +8,6 @@ namespace Student.Service
 {
     internal interface IStudentService
     {
-        StudenT[] ReadAllStudent();
+
     }
 }
