@@ -39,7 +39,9 @@ namespace Student.Service
 
         public Print DisplayStudent(int id)
         {
-            return new Print();
+            return id is 0
+             ? InvalidDisplayStudent()
+             : ValidationAndDisplayStudent(id);
         }
 
         public StudenT InsertStudent(StudenT student)
@@ -54,6 +56,27 @@ namespace Student.Service
             throw new NotImplementedException();
         }
 
+        private Print ValidationAndDisplayStudent(int id)
+        {
+            var studentInfo = this.storeageBroker.PrintNameAndEmail(id);
+            if (studentInfo.FirstName is not null)
+            {
+                this.loggingBroker.LogInformation($"FirstName: {studentInfo.FirstName}\n" +
+                    $"Email: {studentInfo.Email}");
+                return studentInfo;
+            }
+            else
+            {
+                this.loggingBroker.LogError("No information found.");
+                return new Print();
+            }
+        }
+
+        private Print InvalidDisplayStudent()
+        {
+            this.loggingBroker.LogError("Invalid Id.");
+            return new Print();
+        }
         private StudenT ValidationAndInsertStudent(StudenT student)
         {
             if (student.Id is 0
