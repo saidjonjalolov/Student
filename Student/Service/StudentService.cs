@@ -37,7 +37,7 @@ namespace Student.Service
                 : ValidationAndCheckoutByName(firstName);
         }
 
-        public Print DisplayStudent(int id)
+        public DemoStudent DisplayStudent(int id)
         {
             return id is 0
              ? InvalidDisplayStudent()
@@ -51,12 +51,7 @@ namespace Student.Service
              : ValidationAndInsertStudent(student);
         }
 
-        public bool Check(StudenT student)
-        {
-            throw new NotImplementedException();
-        }
-
-        private Print ValidationAndDisplayStudent(int id)
+        private DemoStudent ValidationAndDisplayStudent(int id)
         {
             var studentInfo = this.storeageBroker.PrintNameAndEmail(id);
             if (studentInfo.FirstName is not null)
@@ -68,18 +63,18 @@ namespace Student.Service
             else
             {
                 this.loggingBroker.LogError("No information found.");
-                return new Print();
+                return new DemoStudent();
             }
         }
 
-        private Print InvalidDisplayStudent()
+        private DemoStudent InvalidDisplayStudent()
         {
             this.loggingBroker.LogError("Invalid Id.");
-            return new Print();
+            return new DemoStudent();
         }
         private StudenT ValidationAndInsertStudent(StudenT student)
         {
-            if (student.Id is 0
+            if(student.Id is 0
                 || String.IsNullOrWhiteSpace(student.FirstName)
                 || String.IsNullOrWhiteSpace(student.LastName)
                 || student.Age is 0
@@ -91,7 +86,7 @@ namespace Student.Service
             else
             {
                 var studentInformation = this.storeageBroker.AddStudent(student);
-                if (studentInformation.Email is not null)
+                if(studentInformation.Email is not null)
                 {
                     this.loggingBroker.LogInformation("Succssesfull.");
                 }
@@ -105,8 +100,8 @@ namespace Student.Service
 
         private List<StudenT> ValidationCheckoutByLetter(char letter)
         {
-            List<StudenT> studenInfo = this.storeageBroker.FindStudentByLetter(letter);
-            if (studenInfo is not null)
+                      List<StudenT> studenInfo = this.storeageBroker.FindStudentByLetter(letter);
+            if(studenInfo.Count is not 0)
             {
                 foreach (var student in studenInfo)
                 {
@@ -120,10 +115,9 @@ namespace Student.Service
             {
                 this.loggingBroker.LogError("The user for the entered letter does not exist.");
             }
-                return studenInfo;
-            
-            
+            return studenInfo;
         }
+        
         private StudenT InsertStudentInvalid()
         {
             this.loggingBroker.LogError("Student info is null.");
@@ -167,6 +161,6 @@ namespace Student.Service
             }
 
         }
-
     }
+
 }

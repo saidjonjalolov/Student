@@ -14,10 +14,10 @@ namespace Student.Broker.Storeage
             this.students.Add(new StudenT()
             {
                 Id = 1,
-                FirstName = "Elmurod",
-                LastName = "Salomov",
-                Age = 27,
-                Email = "Salomov@gmail.com"
+                FirstName = "Saidjon",
+                LastName = "Jalolov",
+                Age = 14,
+                Email = "Saidjon@gmail.com"
             });
             this.students.Add(new StudenT()
             {
@@ -93,13 +93,13 @@ namespace Student.Broker.Storeage
             return studentNew;
         }
 
-        public Print PrintNameAndEmail(int id)
+        public DemoStudent PrintNameAndEmail(int id)
         {
             foreach (StudenT studentItem in this.students)
             {
                 if (studentItem.Id == id)
                 {
-                    var studentInfo = new Print()
+                    var studentInfo = new DemoStudent()
                     {
                         FirstName = studentItem.FirstName,
                         Email = studentItem.Email
@@ -107,7 +107,7 @@ namespace Student.Broker.Storeage
                     return studentInfo;
                 }
             }
-            return new Print();
+            return new DemoStudent();
         }
     }
 }
