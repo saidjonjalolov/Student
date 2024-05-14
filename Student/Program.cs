@@ -6,6 +6,6 @@ using Student.Broker.Storeage;
 using Student.Service;
 
 StudentService studentService = new StudentService();
-Console.Write("Id ni kiriting: ");
-int id  = Convert.ToChar(Console.ReadLine());
-studentService.DisplayStudent(id);
+Console.WriteLine("Ismni kiriting: ");
+string studentName = Console.ReadLine();
+studentService.CheckoutByName(studentName);

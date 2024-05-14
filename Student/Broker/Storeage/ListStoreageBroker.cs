@@ -55,6 +55,15 @@ namespace Student.Broker.Storeage
 
         public StudenT AddStudent(StudenT student)
         {
+            foreach (StudenT studentItem in this.students)
+            {
+                if (studentItem.Id == student.Id
+                    && studentItem.Email == student.Email)
+                {
+                    return new StudenT();
+                }
+            }
+
             this.students.Add(student);
             return student;
         }
