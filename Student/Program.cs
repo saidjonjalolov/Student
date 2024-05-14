@@ -37,6 +37,8 @@ do
     if (command.Contains("4") is true)
     {
         StudenT student = new StudenT();
+        Console.Write("Enter the id: ");
+        student.Id = Convert.ToInt32(Console.ReadLine());
         Console.Write("Enter the first name: ");
         student.FirstName = Console.ReadLine();
         Console.Write("Enter the last name: ");
@@ -52,5 +54,15 @@ do
     if (isCommand.Contains("no") is true)
     {
         isContinue = false;
+    }
+    else if (isCommand.Contains("yes") is true)
+    {
+        isContinue = true;
+        Console.Clear();
+    }
+    else
+    {
+        isContinue = false;
+        Console.WriteLine("The command was issued incorrectly.");
     }
 } while (isContinue is true);
