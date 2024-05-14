@@ -29,10 +29,53 @@ namespace Student.Service
                 : ValidationCheckoutByLetter(letter);
         }
 
-        private List<StudenT> InvalidCheckoutByLetter()
+     
+        public StudenT CheckoutByName(string firstName)
         {
-            this.loggingBroker.LogError("Not Found.");
-            return new List<StudenT>();
+            return firstName is null
+                ? InvalidCheckoutByName()
+                : ValidationAndCheckoutByName(firstName);
+        }
+
+        public Print DisplayStudent(int id)
+        {
+            return new Print();
+        }
+
+        public StudenT InsertStudent(StudenT student)
+        {
+            return student is null
+             ? InsertStudentInvalid()
+             : ValidationAndInsertStudent(student);
+        }
+
+        public bool Check(StudenT student)
+        {
+            throw new NotImplementedException();
+        }
+
+        private StudenT ValidationAndInsertStudent(StudenT student)
+        {
+            if (student.Id is 0
+                || String.IsNullOrWhiteSpace(student.FirstName)
+                || String.IsNullOrWhiteSpace(student.LastName))
+            {
+                this.loggingBroker.LogError("Invalid student information.");
+                return new StudenT();
+            }
+            else
+            {
+                var studentInformation = this.storeageBroker.AddStudent(student);
+                if (studentInformation is null)
+                {
+                    this.loggingBroker.LogError("Not Added.");
+                }
+                else
+                {
+                    this.loggingBroker.LogInformation("Secssesfull.");
+                }
+                return studentInformation;
+            }
         }
 
         private List<StudenT> ValidationCheckoutByLetter(char letter)
@@ -58,18 +101,22 @@ namespace Student.Service
             }
             return new List<StudenT>();
         }
-
-        public StudenT CheckoutByName(string firstName)
+        private StudenT InsertStudentInvalid()
         {
-            return firstName is null
-                ? InvalidCheckoutByName()
-                : ValidationAndCheckoutByName(firstName);
+            this.loggingBroker.LogError("Student info is null.");
+            return new Student();
         }
 
         private StudenT InvalidCheckoutByName()
         {
             this.loggingBroker.LogError("The firstname is invalid.");
             return new StudenT();
+        }
+
+        private List<StudenT> InvalidCheckoutByLetter()
+        {
+            this.loggingBroker.LogError("Not Found.");
+            return new List<StudenT>();
         }
 
         private StudenT ValidationAndCheckoutByName(string firstName)
@@ -98,21 +145,5 @@ namespace Student.Service
 
         }
 
-        public Print DisplayStudent(int id)
-        {
-            return id is 0
-
-
-        }
-
-        public StudenT InsertStudent(StudenT student)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Check(StudenT student)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
