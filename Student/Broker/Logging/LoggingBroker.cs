@@ -4,7 +4,7 @@
 
 namespace Student.Broker.Logging
 {
-    internal class LoggingBroker
+    internal class LoggingBroker: ILoggingBroker
     {
         public void LogInformation(string message)
         {
