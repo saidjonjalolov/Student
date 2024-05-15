@@ -2,9 +2,6 @@
 // Great Code Team (c) All rights reserved
 //----------------------------------------
 
-
-
-
 using Student.Broker.Logging;
 using Student.Broker.Storeage;
 using Student.Model;
@@ -13,7 +10,6 @@ namespace Student.Service
 {
     internal class StudentService: IStudentService
     {
-
         private readonly ILoggingBroker loggingBroker;
         private readonly IStoreageBroker storeageBroker;
         public StudentService()
@@ -28,8 +24,7 @@ namespace Student.Service
                 ? InvalidCheckoutByLetter()
                 : ValidationCheckoutByLetter(letter);
         }
-
-     
+        
         public StudenT CheckoutByName(string firstName)
         {
             return firstName is null
@@ -72,6 +67,7 @@ namespace Student.Service
             this.loggingBroker.LogError("Invalid Id.");
             return new DemoStudent();
         }
+        
         private StudenT ValidationAndInsertStudent(StudenT student)
         {
             if(student.Id is 0
@@ -159,8 +155,6 @@ namespace Student.Service
 
                 return studentInfo;
             }
-
         }
     }
-
 }
